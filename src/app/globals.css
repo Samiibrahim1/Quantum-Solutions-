@@ -1,0 +1,181 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bg: 4 7 18;
+  --panel: 10 14 34;
+  --panel-strong: 14 18 44;
+  --text: 240 244 255;
+  --muted: 154 166 193;
+  --neon: 96 165 250;
+  --accent: 168 85 247;
+}
+
+.light {
+  --bg: 243 247 255;
+  --panel: 250 250 253;
+  --panel-strong: 236 239 245;
+  --text: 12 20 34;
+  --muted: 76 89 112;
+  --neon: 29 78 216;
+  --accent: 124 58 237;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  color: rgb(var(--text));
+  background:
+    radial-gradient(circle at top, rgba(59, 130, 246, 0.16), transparent 28%),
+    radial-gradient(circle at bottom right, rgba(168, 85, 247, 0.12), transparent 30%),
+    rgb(var(--bg));
+  font-family: var(--font-body), system-ui, sans-serif;
+  overflow-x: hidden;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+  background-size: 72px 72px;
+  mask-image: radial-gradient(circle at center, black, transparent 78%);
+  opacity: 0.35;
+}
+
+::selection {
+  background: rgba(96, 165, 250, 0.35);
+  color: white;
+}
+
+a,
+button,
+input,
+textarea {
+  -webkit-tap-highlight-color: transparent;
+}
+
+input,
+textarea {
+  outline: none;
+}
+
+.glass {
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.09), rgba(255, 255, 255, 0.04));
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(22px);
+}
+
+.light .glass {
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.92), rgba(246, 249, 255, 0.84));
+  border-color: rgba(2, 6, 23, 0.06);
+}
+
+/* Light mode overrides for common white-based Tailwind utilities so text and panels remain readable */
+.light [class*="text-white"] {
+  color: rgb(var(--text)) !important;
+}
+.light [class*="text-white/"] {
+  color: rgb(var(--text)) !important;
+}
+.light [class*="bg-white"] {
+  background-color: rgb(var(--panel)) !important;
+}
+.light [class*="bg-white/"] {
+  background-color: rgb(var(--panel)) !important;
+}
+.light [class*="border-white"] {
+  border-color: rgba(2,6,23,0.07) !important;
+}
+
+/* Make subtle shadows readable in light mode */
+.light .shadow-premium {
+  box-shadow: 0 10px 30px rgba(15, 23, 42, 0.06), inset 0 1px 0 rgba(255,255,255,0.7);
+}
+
+/* Adjust gradient text for light mode to be darker */
+.light .text-gradient {
+  background: linear-gradient(90deg, #0f172a, #1d4ed8 36%, #7c3aed 68%, #0f172a);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.text-gradient {
+  background: linear-gradient(90deg, #f8fafc, #93c5fd 32%, #c4b5fd 66%, #f8fafc);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.light .text-gradient {
+  background: linear-gradient(90deg, #0f172a, #1d4ed8 36%, #7c3aed 68%, #0f172a);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.noise {
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(circle at 1px 1px, rgba(255, 255, 255, 0.08) 1px, transparent 0);
+  background-size: 20px 20px;
+  opacity: 0.18;
+  mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.55), transparent);
+  pointer-events: none;
+}
+
+.marquee {
+  display: flex;
+  width: max-content;
+  animation: marquee 30s linear infinite;
+}
+
+.marquee-reverse {
+  display: flex;
+  width: max-content;
+  animation: marquee 34s linear infinite reverse;
+}
+
+.shadow-premium {
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.12);
+}
+
+.outline-gradient {
+  position: relative;
+}
+
+.outline-gradient::before {
+  content: "";
+  position: absolute;
+  inset: -1px;
+  border-radius: inherit;
+  padding: 1px;
+  background: linear-gradient(135deg, rgba(96, 165, 250, 0.7), rgba(168, 85, 247, 0.35), rgba(255, 255, 255, 0.08));
+  mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  mask-composite: exclude;
+  pointer-events: none;
+}
+
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
