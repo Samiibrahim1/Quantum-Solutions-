@@ -100,7 +100,7 @@ export function AboutSection() {
                   className="glass flex h-full items-center justify-between rounded-[1.4rem] px-5 py-4"
                 >
                   <span className="font-display text-lg text-white">{item}</span>
-                  <span className="text-xs uppercase tracking-[0.28em] text-white/40">Live stack</span>
+                  <span className="text-xs uppercase tracking-[0.28em] text-cyan-200/80">Live stack</span>
                 </motion.div>
               ))}
             </div>
